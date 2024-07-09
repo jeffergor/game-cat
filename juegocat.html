@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Juego ARO</title>
+<style>
+body{ background-color: green; color:blue;}
+#cuadrado { width:2000px;
+height:2000px; overflow:hidden;}
+#mapa{ position:relative; left:900px; top:900px; }
+#cat{ position:absolute; left:900px; top:900px;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<audio id="Ashore" src="C:\Users\usuario\OneDrive\Documentos\juego cat\Ashore.mp3" controls></audio>
+
+ <script>
+      document.addEventListener("DOMContentLoaded", function() {
+         var audio = document.getElementById("Ashore");
+
+         document.addEventListener("click", function() {
+            audio.play();
+         }, { once: true });
+      });
+   </script><div id="cuadrado"><div id="mapa"><img src="mapa.png"></div></div>
+<div id="cat"><img src="cat.png"></div>
+var puntaje = 0;
+<script>
+var fondo = document.getElementById("mapa");
+var juego = document.getElementById("juego");
+var objetos = [
+   { nombre: "botella de vidrio", imagen: "C:\Users\usuario\OneDrive\Documentos\juego cat\botella de vidrio.png", valor: 10, x: 900, y: 900 },
+   { nombre: "lata de cocacola", imagen: "C:\Users\usuario\OneDrive\Documentos\juego cat\lata de cocacola.png", valor: 20 x:400, y:300 }
+];
+
+objetos.forEach(function(objeto)  {
+var imagenObjeto= document.createElement("img");
+imagenObjeto.src = objeto.imagen;
+   imagenObjeto.alt = objeto.nombre;
+   imagenObjeto.style.position = "absolute";
+   imagenObjeto.style.left = objeto.x + "px";
+   imagenObjeto.style.top = objeto.y + "px";
+   juego.appendChild(imagenObjeto);
+});
+juego.addEventListener("click", function(event) {
+   var objetoClic = event.target;
+   if (objetoClic.tagName === "IMG") {
+      var objetoIndex = Array.from(objetoClic.parentNode.children).indexOf(objetoClic);
+      var objeto = objetos[objetoIndex];
+      objetoClic.style.display = "none";
+      puntaje += objeto.valor;
+      console.log("Puntaje: " + puntaje);
+   }
+});
+
+objetos.forEach(function(objeto) {
+   var elementoObjeto = document.createElement("div");
+   
+var imagenObjeto = document.createElemen("img");
+imagenObjeto.src = objeto.imagen;
+elementoObjeto.appendChild(imagenObjeto);
+
+var elementoObjeto = document.createElement("p");
+textoObjeto.innerText = objeto.botella de vidrio + ": " + objeto.10;
+elementoObjeto.appenChild(textoObjeto);
+textoObjeto.innerText = objeto.lata de cocacola + ": " + objeto.20;
+elementoObjeto.appenChild(textoObjeto);
+
+   contenedorObjetos.appendChild(elementoObjeto);
+});
+</script>
+
+
+</body>
+<script>
+$(document).keypress(function( event ) {
+           switch(event.which)
+           {
+             case 97: // A
+                  $("#datos").text("izquierda");
+                  $( "#mapa" ).animate({ "left": "+=50px" }, "slow" );
+                 break;
+             case 119: // W
+                  $("#datos").text("arriba");
+                  $( "#mapa" ).animate({ "top": "+=50px" }, "slow" );
+                 break;
+             case 100: // D
+                  $("#datos").text("derecha");
+$( "#mapa" ).animate({ "left": "-=50px" }, "slow" );
+                 break;
+              case 115: // S
+                  $("#datos").text("abajo");
+$( "#mapa" ).animate({ "top": "-=50px" }, "slow" );
+                 break;
+  }
+
+     //$("#datos").text("tecla:"+event.which);
+   
+});
+</script>
+
+}
+</html>
